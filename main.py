@@ -5,7 +5,7 @@ import re
 
 Db = sqlite3.connect('database.db')
 curDb = Db.cursor()
-cur.execute('''
+curDb.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             dicord_id INTEGER,
@@ -14,8 +14,8 @@ cur.execute('''
             referals_count INTEGER,
             used_promo INTEGER)
     ''')
-conn.commit()
-conn.close()
+Db.commit()
+Db.close()
 def getUser(userTg):
     curDb.execute("SELECT * FROM users;")
     users = curDb.fetchall()
